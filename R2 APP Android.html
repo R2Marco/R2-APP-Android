@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Reloj en Android</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            margin: 20px;
+            background-color: #333; /* Fondo gris oscuro */
+            color: snow; /* Letras en snow blanco */
+            overflow: hidden; /* Oculta barras de desplazamiento */
+        }
+
+        #reloj {
+            font-size: 100px;
+            line-height: 1.5; /* Espaciado entre líneas */
+            font-weight: bold; /* Texto en negrita */	
+        }
+    </style>
+</head>
+<body>
+    <div id="reloj"></div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            actualizarHora();
+            setInterval(actualizarHora, 1000); // Actualiza la hora cada segundo
+        });
+
+        function actualizarHora() {
+            var fecha = new Date();
+            var horas = agregarCeroDelante(fecha.getHours());
+            var minutos = agregarCeroDelante(fecha.getMinutes());
+            var segundos = agregarCeroDelante(fecha.getSeconds());
+
+            var horaActual = '<div>' + horas + '<br>' + minutos + '<br>' + segundos + '</div>';
+            
+            document.getElementById('reloj').innerHTML = horaActual;
+        }
+
+        function agregarCeroDelante(numero) {
+            return (numero < 10 ? '0' : '') + numero;
+        }
+
+    </script>
+</body>
+</html>
